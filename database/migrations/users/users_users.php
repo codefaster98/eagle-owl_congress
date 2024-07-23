@@ -8,8 +8,10 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::disableForeignKeyConstraints();
         Schema::create('users_users', function (Blueprint $table) {
@@ -17,23 +19,39 @@ return new class extends Migration
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('code')->unique();
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('title')->comment("mr,dr ...etc");
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('job_position')->nullable();
             $table->string('email')->unique();
-            $table->string('phone');
             $table->string('password');
-            $table->string('otp')->nullable();
-            $table->boolean('is_member')->default(false);
-            $table->foreignId('member_id')->nullable()->references('id')->on('memberships_member_ship')->constrained();
-            $table->boolean('active')->default(false);
-            $table->boolean('deleted');
+            $table->string('phone_number_code')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('country');
+            $table->string('city');
+            $table->string('address_line_1');
+            $table->string('address_line_2')->nullable();
+            $table->string('post_code')->nullable();
+            // for system
+            $table->string('created_type')->comment('admin || user');
+            $table->string('created_at');
+            $table->string('created_by')->nullable();
+            $table->string('updated_type')->nullable()->comment('admin || user');
+            $table->string('updated_at')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->longText('verify_token')->nullable();
+            $table->string('active_type')->nullable()->comment('passwords || email verify || ..etc');
+            $table->boolean('active')->default(true);
         });
         Schema::enableForeignKeyConstraints();
     }
+
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('users_users');

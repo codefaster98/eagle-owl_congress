@@ -8,32 +8,43 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::create('admin_users_admin', function (Blueprint $table) {
+        Schema::create('users_admins', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('code')->unique();
-            $table->string('fname');
-            $table->string('lname');
             $table->string('email')->unique();
-            $table->string('phone');
             $table->string('password');
-            $table->boolean('active')->default(false);
-            $table->boolean('deleted');
+            $table->string('name');
+            $table->json('rules');
+            // for system
+            $table->string('created_at');
+            $table->string('created_by');
+            $table->string('updated_at')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_at')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->boolean('delete')->default(false);
+            $table->boolean('active')->default(true);
         });
         Schema::enableForeignKeyConstraints();
     }
+
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('admin_users_admin');
+        Schema::dropIfExists('users_admins');
         Schema::enableForeignKeyConstraints();
     }
 };
