@@ -18,20 +18,13 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
-            $table->string('code')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
-            $table->json('rules');
-            // for system
-            $table->string('created_at');
-            $table->string('created_by');
-            $table->string('updated_at')->nullable();
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_at')->nullable();
-            $table->string('deleted_by')->nullable();
-            $table->boolean('delete')->default(false);
-            $table->boolean('active')->default(true);
+            $table->string('remember_token')->nullable();
+            $table->json('rules')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
         Schema::enableForeignKeyConstraints();
     }

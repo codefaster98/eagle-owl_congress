@@ -32,13 +32,9 @@ return new class extends Migration
             $table->string('address_line_1');
             $table->string('address_line_2')->nullable();
             $table->string('post_code')->nullable();
-            // for system
-            $table->string('created_type')->comment('admin || user');
-            $table->string('created_at');
-            $table->string('created_by')->nullable();
-            $table->string('updated_type')->nullable()->comment('admin || user');
-            $table->string('updated_at')->nullable();
-            $table->string('updated_by')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->timestamps();
+            //
             $table->longText('verify_token')->nullable();
             $table->string('active_type')->nullable()->comment('passwords || email verify || ..etc');
             $table->boolean('active')->default(true);

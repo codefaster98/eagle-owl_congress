@@ -5,36 +5,41 @@ namespace App\Models\Users;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UsersUsersM extends Authenticatable  implements JWTSubject
+class UsersUsersM extends Authenticatable implements JWTSubject
 {
-    public $timestamps = false;
     protected $table = "users_users";
     protected $fillable = [
+        'id',
         'code',
-        'fname',
-        'lname',
+        'title',
+        'first_name',
+        'last_name',
+        'job_position',
         'email',
         'password',
-        'phone',
-        'otp',
-        'member_id',
-        'is_member',
+        'phone_number_code',
+        'phone_number',
+        'country',
+        'city',
+        'address_line_1',
+        'address_line_2',
+        'post_code',
+        'verify_token',
+        'active_type',
         'active',
-        'deleted',
     ];
     protected $hidden = [
         'id',
-        'otp',
-        'member_id',
-        'is_member',
-        'active',
-        'deleted',
         'password',
+        'verify_token',
+        'active_type',
+        'active',
     ];
     protected function casts(): array
     {
         return [
             'password' => 'hashed',
+            'active' => 'boolean',
         ];
     }
     public function getJWTIdentifier()
