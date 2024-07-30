@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models\users;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

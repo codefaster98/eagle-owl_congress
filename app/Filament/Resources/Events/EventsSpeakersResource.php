@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\Users;
+namespace App\Filament\Resources\Events;
 
-use App\Filament\Resources\Users\UsersUsersResource\Pages;
-use App\Filament\Resources\Users\UsersUsersResource\RelationManagers;
-use App\Models\Users\UsersUsers;
-use App\Models\users\UsersUsersM;
+use App\Filament\Resources\Events\EventsSpeakersResource\Pages;
+use App\Filament\Resources\Events\EventsSpeakersResource\RelationManagers;
+use App\Models\Events\EventsSpeakers;
+use App\Models\events\EventsSpeakersM;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,10 +14,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UsersUsersResource extends Resource
+class EventsSpeakersResource extends Resource
 {
-    protected static ?string $model = UsersUsersM::class;
-    protected static ?string $modelLabel = "Users";
+    protected static ?string $model = EventsSpeakersM::class;
+    protected static ?string $modelLabel = "Events Speakers";
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -58,9 +58,9 @@ class UsersUsersResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsersUsers::route('/'),
-            'create' => Pages\CreateUsersUsers::route('/create'),
-            'edit' => Pages\EditUsersUsers::route('/{record}/edit'),
+            'index' => Pages\ListEventsSpeakers::route('/'),
+            'create' => Pages\CreateEventsSpeakers::route('/create'),
+            'edit' => Pages\EditEventsSpeakers::route('/{record}/edit'),
         ];
     }
 }

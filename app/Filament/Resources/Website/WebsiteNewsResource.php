@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\Users;
+namespace App\Filament\Resources\Website;
 
-use App\Filament\Resources\Users\UsersUsersResource\Pages;
-use App\Filament\Resources\Users\UsersUsersResource\RelationManagers;
-use App\Models\Users\UsersUsers;
-use App\Models\users\UsersUsersM;
+use App\Filament\Resources\Website\WebsiteNewsResource\Pages;
+use App\Filament\Resources\Website\WebsiteNewsResource\RelationManagers;
+use App\Models\Website\WebsiteNews;
+use App\Models\website\WebsiteNewsM;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,10 +14,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UsersUsersResource extends Resource
+class WebsiteNewsResource extends Resource
 {
-    protected static ?string $model = UsersUsersM::class;
-    protected static ?string $modelLabel = "Users";
+    protected static ?string $model = WebsiteNewsM::class;
+    protected static ?string $modelLabel = "Website News";
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -58,9 +58,9 @@ class UsersUsersResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsersUsers::route('/'),
-            'create' => Pages\CreateUsersUsers::route('/create'),
-            'edit' => Pages\EditUsersUsers::route('/{record}/edit'),
+            'index' => Pages\ListWebsiteNews::route('/'),
+            'create' => Pages\CreateWebsiteNews::route('/create'),
+            'edit' => Pages\EditWebsiteNews::route('/{record}/edit'),
         ];
     }
 }

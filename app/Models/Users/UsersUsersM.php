@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models\users;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -34,6 +34,9 @@ class UsersUsersM extends Authenticatable implements JWTSubject
         'verify_token',
         'active_type',
         'active',
+        'remember_token',
+        'created_at',
+        'updated_at',
     ];
     protected function casts(): array
     {

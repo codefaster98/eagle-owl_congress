@@ -21,16 +21,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $ds = DIRECTORY_SEPARATOR;
         $this->loadMigrationsFrom([
-            base_path("database" . $ds . "migrations" . $ds . "admin"),
-            base_path("database" . $ds . "migrations" . $ds . "events"),
-            base_path("database" . $ds . "migrations" . $ds . "form"),
-            base_path("database" . $ds . "migrations" . $ds . "members"),
-            base_path("database" . $ds . "migrations" . $ds . "memberships"),
-            base_path("database" . $ds . "migrations" . $ds . "speakers"),
             base_path("database" . $ds . "migrations" . $ds . "system"),
             base_path("database" . $ds . "migrations" . $ds . "users"),
+            base_path("database" . $ds . "migrations" . $ds . "website"),
+            base_path("database" . $ds . "migrations" . $ds . "events"),
         ]);
-        $this->loadRoutesFrom(base_path("routes" . $ds . "api" . $ds . "auth.php"));
-        $this->loadRoutesFrom(base_path("routes" . $ds . "api" . $ds . "app.php"));
+        $this->loadRoutesFrom(base_path("routes" . $ds . "auth.php"));
+        $this->loadRoutesFrom(base_path("routes" . $ds . "app.php"));
     }
 }

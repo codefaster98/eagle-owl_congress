@@ -28,6 +28,7 @@ class VerifyCodeEmail extends Mailable
     {
         return new Envelope(
             subject: 'Verify Code Email',
+            from: (string) config("mail.mailers.dev.username")
         );
     }
 
