@@ -19,7 +19,6 @@ Route::name("api.auth.")
     ->middleware(['api_with_auth'])
     ->controller(auth::class)
     ->group(function () {
-        Route::get('/Profile', 'Profile')->name("Profile");
         Route::post('/Logout', 'Logout')->name("Logout")->withoutMiddleware(['auth:api']);
     });
 

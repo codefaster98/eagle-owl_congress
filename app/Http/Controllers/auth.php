@@ -91,22 +91,7 @@ class auth extends Controller
             );
         }
     }
-    public function Profile()
-    {
-        try {
-            return  SystemApiResponseServices::ReturnSuccess(
-                ["user" => UsersUsersServices::Auth()],
-                null,
-                null
-            );
-        } catch (\Throwable $th) {
-            return SystemApiResponseServices::ReturnError(
-                9800,
-                null,
-                $th->getMessage(),
-            );
-        }
-    }
+  
 
 
 

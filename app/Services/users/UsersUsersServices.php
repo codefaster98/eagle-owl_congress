@@ -26,6 +26,46 @@ class UsersUsersServices
         // return $user
         return $user;
     }
+    static public function ChangePassword(array $data)
+    {
+        $user = UsersUsersM::where('id', $data['user'])->first();
+        $user->password = $data["password"];
+        return  $user->save();
+        // // send verify mail
+        // Mail::to($user->email)->send(new VerifyCodeEmail($user->verify_token));
+        // return $user
+        // return $user;
+    }
+    static public function ChangeName(array $data)
+    {
+        $user = UsersUsersM::where('id', $data['user'])->first();
+        $user->first_name = $data["first_name"];
+        $user->last_name = $data["last_name"];
+        return  $user->save();
+        // // send verify mail
+        // Mail::to($user->email)->send(new VerifyCodeEmail($user->verify_token));
+        // return $user
+        // return $user;
+    }
+    static public function ChangePhone(array $data)
+    {
+        $user = UsersUsersM::where('id', $data['user'])->first();
+        $user->phone_number_code = $data["phone_number_code"];
+        $user->phone_number = $data["phone_number"];
+        return  $user->save();
+    }
+    static public function ChangeEmail(array $data)
+    {
+        $user = UsersUsersM::where('id', $data['user'])->first();
+        $user->email = $data["email"];
+        $user->verify_token = $data["verify_token"];
+        $user->active_type = $data["active_type"];
+        $user->active = $data["active"];
+        $action = $user->save();
+        // send verify mail
+        Mail::to($user->email)->send(new VerifyCodeEmail($user->verify_token));
+        return $action;
+    }
     static public function Login($email, $password)
     {
         $token = auth("api")->attempt([

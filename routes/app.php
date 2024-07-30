@@ -3,6 +3,7 @@
 use App\Http\Controllers\events_speakers;
 use App\Http\Controllers\events_sponsors;
 use App\Http\Controllers\faqs;
+use App\Http\Controllers\my;
 use App\Http\Controllers\news;
 use App\Http\Controllers\topics;
 use Illuminate\Support\Facades\Route;
@@ -72,12 +73,20 @@ Route::name("api.")
                 Route::get('/All', 'WithOutAuthAll')->name("WithOutAuthAll");
             });
     });
-// // with auth
-// Route::name("api.auth.")
-//     ->prefix("API/Auth")
-//     ->middleware(['api_with_auth'])
-//     ->controller(auth::class)
-//     ->group(function () {
-//         Route::get('/Profile', 'Profile')->name("Profile");
-//         Route::post('/Logout', 'Logout')->name("Logout")->withoutMiddleware(['auth:api']);
-//     });
+// with auth
+// without auth
+Route::name("api.")
+    ->prefix("API")
+    ->middleware(['api_with_auth'])
+    ->group(function () {
+        Route::name("my.")
+            ->controller(my::class)
+            ->prefix("My")
+            ->group(function () {
+                Route::get('/Profile', 'Profile')->name("Profile");
+                Route::post('/Change-Password', 'ChangePassword')->name("ChangePassword");
+                Route::post('/Change-Name', 'ChangeName')->name("ChangeName");
+                Route::post('/Change-Email', 'ChangeEmail')->name("ChangeEmail");
+                Route::post('/Change-Phone', 'ChangePhone')->name("ChangePhone");
+            });
+    });
