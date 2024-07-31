@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
             base_path("database" . $ds . "migrations" . $ds . "users"),
             base_path("database" . $ds . "migrations" . $ds . "website"),
             base_path("database" . $ds . "migrations" . $ds . "events"),
+            base_path("database" . $ds . "migrations" . $ds . "form"),
         ]);
         $this->loadRoutesFrom(base_path("routes" . $ds . "auth.php"));
         $this->loadRoutesFrom(base_path("routes" . $ds . "app.php"));

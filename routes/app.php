@@ -89,4 +89,11 @@ Route::name("api.")
                 Route::post('/Change-Email', 'ChangeEmail')->name("ChangeEmail");
                 Route::post('/Change-Phone', 'ChangePhone')->name("ChangePhone");
             });
+        Route::name("events_sponsors.")
+            ->controller(events_sponsors::class)
+            ->prefix("Events-Sponsors")
+            ->group(function () {
+                Route::post('/Add', 'AddNew')->name("AddNew");
+                Route::post('{sponsor_code}/Edit', 'Edit')->name("Edit");
+            });
     });

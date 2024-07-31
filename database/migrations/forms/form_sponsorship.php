@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events_sponsorship_requests', function (Blueprint $table) {
+        Schema::disableForeignKeyConstraints();
+        Schema::create('form_sponsorship', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('name');
             $table->string('positing');
             $table->string('email');
-            $table->string('phone_code');  
+            $table->string('phone_code');
             $table->string('phone');
-            $table->longText('message')->nullable();
-            $table->string('status');
-            // for system
-            $table->string('created_at');
+            $table->longText('message');
+            //for system
+            $table->timestamps();
+            $table->softDeletes();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -32,7 +34,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events_sponsorship_requests');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('form_sponsorship');
+        Schema::enableForeignKeyConstraints();
     }
 };
 // 112298604

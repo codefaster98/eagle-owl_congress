@@ -15,6 +15,29 @@ class EventsSponsorsServices
             return $code;
         }
     }
+    static public function AddNew(array $data)
+    {
+        return EventsSponsorsM::create($data);
+    }
+    static public function GetByCode(array|null $Relations, $sponsor_code)
+    {
+        if ($Relations) {
+            return EventsSponsorsM::where("code", $sponsor_code)->with($Relations)->first();
+        } else {
+            return EventsSponsorsM::where("code", $sponsor_code)->first();
+        }
+    }
+    static public function Edit($sponsor_code, array $data)
+    {
+        // $data["img"] = "ll";
+        return EventsSponsorsM::where("code", $sponsor_code)->first()->update($data);
+    }
+    static public function UploadImg($spon_code, $img)
+    {
+        $imageName = $spon_code . "." . $img->extension();
+        return  $path = $img->storeAs('Events_Sponsors', $imageName);
+        // return EventsSponsorsM::where('code')->update(['img' => $path]);
+    }
     static public function GetAllWithLimit(array|null $Relations, int $limit)
     {
         if ($Relations) {

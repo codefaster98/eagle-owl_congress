@@ -19,4 +19,10 @@ return [
         "ChangePhoneSucc" => "User Change Phone Successfuly",
         "ChangePhoneFailed" => "User Change Phone Failed",
     ],
+    "events_sponsors" => [
+        "AddedSucc" => "Sponsor Added Successfuly",
+        "AddedFailed" => "Sponsor Added Failed",
+        "EditSucc" => "Sponsor Edit Successfuly",
+        "EditFailed" => "Sponsor Edit Failed",
+    ],
 ];
