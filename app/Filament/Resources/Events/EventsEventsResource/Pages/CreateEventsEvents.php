@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Events\EventsEventsResource\Pages;
 use App\Filament\Resources\Events\EventsEventsResource;
 use App\Models\events\EventsCategoryM;
 use App\Models\events\EventsEventsSpeakersM;
+use App\Models\events\EventsEventsSponsorsM;
 use App\Models\events\EventsSpeakersM;
 use App\Models\events\EventsSponsorsM;
 use App\Services\events\EventsEventsServices;
@@ -47,6 +48,14 @@ class CreateEventsEvents extends CreateRecord
             $event_speaker->event_id = $record->id;
             // Save the relation data
             $event_speaker->save();
+        }
+        foreach ($data["events_sponsors"] ?? [] as $events_sponsors) {
+            // Create a relation 
+            $event_sponsors = new EventsEventsSponsorsM();
+            $event_sponsors->sponsors_id = $events_sponsors;
+            $event_sponsors->event_id = $record->id;
+            // Save the relation data
+            $event_sponsors->save();
         }
         return $record;
     }

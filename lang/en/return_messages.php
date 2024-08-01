@@ -25,4 +25,8 @@ return [
         "EditSucc" => "Sponsor Edit Successfuly",
         "EditFailed" => "Sponsor Edit Failed",
     ],
+    "form_sponsorship" => [
+        "AddedSucc" => "Sponsor Added Successfuly",
+        "AddedFailed" => "Sponsor Added Failed",
+    ],
 ];

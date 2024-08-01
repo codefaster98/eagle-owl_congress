@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('events_events_sponsors', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('sponsors_id');
             $table->string('event_id');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -25,7 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('events_events_sponsors');
+        Schema::enableForeignKeyConstraints();
     }
 };
 // 112298604

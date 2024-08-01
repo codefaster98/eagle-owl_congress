@@ -17,7 +17,6 @@ return new class extends Migration
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('name');
-            $table->string('positing');
             $table->string('email');
             $table->string('phone_code');
             $table->string('phone');

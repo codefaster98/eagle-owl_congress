@@ -9,9 +9,8 @@ class FormSponsorshipM extends Model
     protected $table = "form_sponsorship";
     protected $fillable = [
         'name',
-        'positing',
         'email',
-        'phone_code',
+        'phone_code', 
         'phone',
         'message',
     ];

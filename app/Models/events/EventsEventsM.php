@@ -36,6 +36,10 @@ class EventsEventsM extends Model
     }
     public function Speakers()
     {
-        return $this->hasMany(EventsEventsSpeakersM::class, "eveny_id", "id");
+        return $this->hasMany(EventsEventsSpeakersM::class, "event_id", "id")->with("Speakers");
+    }
+    public function Sponsors()
+    {
+        return $this->hasMany(EventsEventsSponsorsM::class, "event_id", "id");
     }
 }

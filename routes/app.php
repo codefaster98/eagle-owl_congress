@@ -3,6 +3,7 @@
 use App\Http\Controllers\events_speakers;
 use App\Http\Controllers\events_sponsors;
 use App\Http\Controllers\faqs;
+use App\Http\Controllers\form_sponsorship;
 use App\Http\Controllers\my;
 use App\Http\Controllers\news;
 use App\Http\Controllers\topics;
@@ -71,6 +72,12 @@ Route::name("api.")
             ->prefix("Events-Sponsors")
             ->group(function () {
                 Route::get('/All', 'WithOutAuthAll')->name("WithOutAuthAll");
+            });
+        Route::name("form_sponsorship.")
+            ->controller(form_sponsorship::class)
+            ->prefix("Form/Sponsorship")
+            ->group(function () {
+                Route::post('/Add', 'AddNew')->name("AddNew");
             });
     });
 // with auth
