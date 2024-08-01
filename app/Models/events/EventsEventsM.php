@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventsEventsM extends Model
 {
-    protected $table = "events_events";
+    public $table = "events_events";
     protected $fillable = [
         'code',
         'category_id',
@@ -33,5 +33,9 @@ class EventsEventsM extends Model
             'short_details' => 'array',
             'long_details' => 'array',
         ];
+    }
+    public function Speakers()
+    {
+        return $this->hasMany(EventsEventsSpeakersM::class, "eveny_id", "id");
     }
 }

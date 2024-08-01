@@ -38,6 +38,24 @@ class EventsSponsorsServices
         return  $path = $img->storeAs('Events_Sponsors', $imageName);
         // return EventsSponsorsM::where('code')->update(['img' => $path]);
     }
+    static public function GetAllWithLimitForUser($user_id, array|null $Relations, int $limit)
+    {
+
+        if ($Relations) {
+            return EventsSponsorsM::where('user_id', $user_id)->limit($limit)->with($Relations)->get();
+        } else {
+            return EventsSponsorsM::where('user_id', $user_id)->limit($limit)->get();
+        }
+    }
+    static public function GetAllWithLimitAndRandomForUser($user_id, array|null $Relations, int $limit)
+    {
+
+        if ($Relations) {
+            return EventsSponsorsM::where('user_id', $user_id)->inRandomOrder()->limit($limit)->with($Relations)->get();
+        } else {
+            return EventsSponsorsM::where('user_id', $user_id)->inRandomOrder()->limit($limit)->get();
+        }
+    }
     static public function GetAllWithLimit(array|null $Relations, int $limit)
     {
         if ($Relations) {

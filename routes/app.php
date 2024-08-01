@@ -95,5 +95,14 @@ Route::name("api.")
             ->group(function () {
                 Route::post('/Add', 'AddNew')->name("AddNew");
                 Route::post('{sponsor_code}/Edit', 'Edit')->name("Edit");
+                Route::get('/All-My', 'AllMy')->name("AllMy");
             });
+        // Route::name("events_events.")
+        //     ->controller(events_events::class)
+        //     ->prefix("Events-Sponsors")
+        //     ->group(function () {
+        //         Route::post('/Add', 'AddNew')->name("AddNew");
+        //         Route::post('{sponsor_code}/Edit', 'Edit')->name("Edit");
+        //         Route::get('/All-My', 'AllMy')->name("AllMy");
+        //     });
     });

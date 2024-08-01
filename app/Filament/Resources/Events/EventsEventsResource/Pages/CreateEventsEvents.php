@@ -4,6 +4,9 @@ namespace App\Filament\Resources\Events\EventsEventsResource\Pages;
 
 use App\Filament\Resources\Events\EventsEventsResource;
 use App\Models\events\EventsCategoryM;
+use App\Models\events\EventsEventsSpeakersM;
+use App\Models\events\EventsSpeakersM;
+use App\Models\events\EventsSponsorsM;
 use App\Services\events\EventsEventsServices;
 use Filament\Actions;
 use Filament\Forms\Components\DatePicker;
@@ -13,6 +16,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Database\Eloquent\Model;
 
 class CreateEventsEvents extends CreateRecord
 {
@@ -30,6 +34,22 @@ class CreateEventsEvents extends CreateRecord
         // dd($data);
         return $data;
     }
+
+    protected function handleRecordCreation(array $data): Model
+    {
+        // dd($data);
+        //insert the main record
+        $record =  static::getModel()::create($data);
+        foreach ($data["events_speakers"] ?? [] as $events_speaker) {
+            // Create a relation 
+            $event_speaker = new EventsEventsSpeakersM();
+            $event_speaker->speaker_id = $events_speaker;
+            $event_speaker->event_id = $record->id;
+            // Save the relation data
+            $event_speaker->save();
+        }
+        return $record;
+    }
     public function form(Form $form): Form
     {
         return $form
@@ -44,6 +64,8 @@ class CreateEventsEvents extends CreateRecord
                 Textarea::make('short_details_en')->required()->label("English short details"),
                 Textarea::make('long_details_ar')->required()->label("Arabic long details"),
                 Textarea::make('long_details_en')->required()->label("English long details"),
+                Select::make('events_speakers')->required()->label("events speakers")->multiple()->options(EventsSpeakersM::all()->pluck('name.en', 'id'))->searchable(),
+                Select::make('events_sponsors')->required()->label("events sponsors")->multiple()->options(EventsSponsorsM::all()->pluck('first_name.en', 'id'))->searchable(),
             ]);
     }
 }
