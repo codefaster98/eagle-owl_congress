@@ -34,6 +34,10 @@ class EventsEventsM extends Model
             'long_details' => 'array',
         ];
     }
+    public function Category()
+    {
+        return $this->hasOne(EventsCategoryM::class, "id", "category_id");
+    }
     public function Speakers()
     {
         return $this->hasMany(EventsEventsSpeakersM::class, "event_id", "id")->with("Speakers");

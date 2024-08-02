@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\events_events;
 use App\Http\Controllers\events_speakers;
 use App\Http\Controllers\events_sponsors;
 use App\Http\Controllers\faqs;
@@ -72,6 +73,14 @@ Route::name("api.")
             ->prefix("Events-Sponsors")
             ->group(function () {
                 Route::get('/All', 'WithOutAuthAll')->name("WithOutAuthAll");
+            });
+        Route::name("events_events.")
+            ->controller(events_events::class)
+            ->prefix("Events")
+            ->group(function () {
+                Route::get('/AllDates', 'WithOutAuthAllDates')->name("WithOutAuthAllDates");
+                Route::get('/All-By-Date', 'WithOutAuthAllByDate')->name("WithOutAuthAllByDate");
+                Route::get('{code}/Details', 'GetDetails')->name("GetDetails");
             });
         Route::name("form_sponsorship.")
             ->controller(form_sponsorship::class)

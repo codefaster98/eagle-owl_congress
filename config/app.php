@@ -9,7 +9,14 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
     'timezone' => env('APP_TIMEZONE', 'UTC'),
-
+    'date' => [
+        "now" => now("Africa/Cairo"),
+        'format' => 'd-m-Y  h:i A',
+        'format_notification' => 'd-M h:i A',
+        'format_without_time' => 'd-m-Y',
+        'format_defult_input' => 'Y-m-d',
+        'format_carbon' => '%I:%H (%D)',
+    ],
 
     'locale' => env('APP_LOCALE', 'en'),
 

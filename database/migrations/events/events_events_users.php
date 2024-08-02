@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('events_events_users', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('date');
             $table->boolean('attend')->nullable();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -27,13 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('events_events_users');
+        Schema::enableForeignKeyConstraints();
     }
 };
-// 112298604
-// 24 hour
-// speed test 
-/**
- * 
- * 16375782577
- */
