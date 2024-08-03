@@ -75,6 +75,7 @@ class CreateEventsEvents extends CreateRecord
                 Textarea::make('long_details_en')->required()->label("English long details"),
                 Select::make('events_speakers')->required()->label("events speakers")->multiple()->options(EventsSpeakersM::all()->pluck('name.en', 'id'))->searchable(),
                 Select::make('events_sponsors')->required()->label("events sponsors")->multiple()->options(EventsSponsorsM::all()->pluck('first_name.en', 'id'))->searchable(),
+                TextInput::make('price')->required()->label("price")->numeric(),
             ]);
     }
 }

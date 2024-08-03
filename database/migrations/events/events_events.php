@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('from_time');
             $table->string('to_time');
+            $table->string('price')->default(0);
             // for system
             $table->timestamps();
             $table->softDeletes();

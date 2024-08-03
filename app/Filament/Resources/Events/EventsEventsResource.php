@@ -60,6 +60,7 @@ class EventsEventsResource extends Resource
         return [
             'index' => Pages\ListEventsEvents::route('/'),
             'create' => Pages\CreateEventsEvents::route('/create'),
+            'view' => Pages\ViewEventsEvents::route('/{record}'),
             'edit' => Pages\EditEventsEvents::route('/{record}/edit'),
         ];
     }

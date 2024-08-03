@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('date');
             $table->boolean('attend')->nullable();
+            $table->string('price')->default(0);
+            $table->json('Payment_details')->nullable();
+            $table->boolean('paid')->default(false);
         });
         Schema::enableForeignKeyConstraints();
     }

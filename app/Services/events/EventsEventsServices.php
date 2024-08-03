@@ -3,6 +3,8 @@
 namespace App\Services\events;
 
 use App\Models\events\EventsEventsM;
+use App\Models\events\EventsEventsUsersM;
+use App\Models\users\UsersUsersM;
 use Illuminate\Support\Facades\DB;
 
 class EventsEventsServices
@@ -45,33 +47,44 @@ class EventsEventsServices
         }
     }
     //
-    static public function CheckSubscribe($user_id, $event_id)
+    static public function CheckSubscribe($user_code, $event_code): bool
     {
+        $user = UsersUsersM::where('code', $user_code)->first();
+        $event = EventsEventsM::where('code', $event_code)->first();
         return EventsEventsUsersM::where([
-            'event_id' => $event_id,
-            'user_id' => $user_id,
+            'event_id' => $event->id,
+            'user_id' => $user->id,
         ])->exists();
+    }
+    static public function CheckSubscribeDetails($user_code, $event_code)
+    {
+        $user = UsersUsersM::where('code', $user_code)->first();
+        $event = EventsEventsM::where('code', $event_code)->first();
+        return EventsEventsUsersM::where([
+            'event_id' => $event->id,
+            'user_id' => $user->id,
+        ])->first();
     }
     static public function Subscribe($user_id, $event_id)
     {
-        return EventsEventsUsersM::create([
-            'event_id' => $event_id,
-            'user_id' => $user_id,
-            'date' => config("app.date.now"),
-            'attend' => null,
-        ]);
+        // return EventsEventsUsersM::create([
+        //     'event_id' => $event_id,
+        //     'user_id' => $user_id,
+        //     'date' => config("app.date.now"),
+        //     'attend' => null,
+        // ]);
     }
     static public function UnSubscribe($user_id, $event_id)
     {
-        return EventsEventsUsersM::where([
-            'event_id' => $event_id,
-            'user_id' => $user_id,
-        ])->delete();
+        // return EventsEventsUsersM::where([
+        //     'event_id' => $event_id,
+        //     'user_id' => $user_id,
+        // ])->delete();
     }
     static public function AllSubscribedEvents($user_id)
     {
-        return EventsEventsUsersM::where('user_id', $user_id)
-            ->with(["Event"])
-            ->get();
+        // return EventsEventsUsersM::where('user_id', $user_id)
+        //     ->with(["Event"])
+        //     ->get();
     }
 }

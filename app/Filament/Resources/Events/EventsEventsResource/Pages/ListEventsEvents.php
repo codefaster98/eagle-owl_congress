@@ -6,6 +6,7 @@ use App\Filament\Resources\Events\EventsEventsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -17,6 +18,7 @@ class ListEventsEvents extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            // Actions\ViewAction::make(),
         ];
     }
     /*
@@ -39,6 +41,7 @@ class ListEventsEvents extends ListRecords
                 TextColumn::make('date')->dateTime("Y-m-d"),
                 TextColumn::make('from_time')->dateTime("H:i"),
                 TextColumn::make('to_time')->dateTime("H:i"),
+                TextColumn::make('price')->numeric(),
             ])
             ->filters([
                 // Filter::make('verified')
@@ -47,6 +50,7 @@ class ListEventsEvents extends ListRecords
             ])
             ->actions([
                 EditAction::make(),
+                ViewAction::make(),
             ])
             ->bulkActions([
                 // BulkActionGroup::make([

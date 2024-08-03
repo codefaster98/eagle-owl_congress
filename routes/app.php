@@ -81,6 +81,7 @@ Route::name("api.")
                 Route::get('/AllDates', 'WithOutAuthAllDates')->name("WithOutAuthAllDates");
                 Route::get('/All-By-Date', 'WithOutAuthAllByDate')->name("WithOutAuthAllByDate");
                 Route::get('{code}/Details', 'GetDetails')->name("GetDetails");
+                Route::get('Check-Subscribe', 'CheckSubscribe')->name("CheckSubscribe");
             });
         Route::name("form_sponsorship.")
             ->controller(form_sponsorship::class)

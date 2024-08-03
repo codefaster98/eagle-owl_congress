@@ -15,6 +15,7 @@ class EventsEventsM extends Model
         'long_details',
         'date',
         'from_time',
+        'price',
         'to_time',
     ];
     protected $hidden = [
@@ -32,6 +33,7 @@ class EventsEventsM extends Model
             'name' => 'array',
             'short_details' => 'array',
             'long_details' => 'array',
+            'price' => 'integer',
         ];
     }
     public function Category()

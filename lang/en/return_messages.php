@@ -29,4 +29,7 @@ return [
         "AddedSucc" => "Sponsor Added Successfuly",
         "AddedFailed" => "Sponsor Added Failed",
     ],
+    "events_events" => [
+        "NotSubscribeYet" => "Not Subscribe Yet",
+    ],
 ];

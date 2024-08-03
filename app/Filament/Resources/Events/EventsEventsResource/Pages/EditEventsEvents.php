@@ -115,6 +115,8 @@ class EditEventsEvents extends EditRecord
                 Select::make('events_sponsors')->required()->label("events sponsors")->multiple()->options(EventsSponsorsM::all()->pluck('first_name.en', 'id'))->searchable(),
                 Select::make('events_speakers')->multiple()
                     ->required()->label("events speakers")->options(EventsSpeakersM::all()->pluck('name.en', 'id'))->searchable(),
+                TextInput::make('price')->required()->label("price")->numeric(),
+
 
             ]);
     }
