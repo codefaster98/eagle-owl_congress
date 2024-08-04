@@ -30,8 +30,7 @@ class ViewEventsEvents extends ViewRecord
             ->schema([
                 TextEntry::make('code')->label("code"),
                 TextEntry::make('price')->label("price")->numeric(),
-                TextEntry::make('category.name')->badge()
-                    ->separator(',')->label("Category Name"),
+                TextEntry::make('category.name')->badge()->separator(',')->label("Category Name"),
                 TextEntry::make('date')->dateTime('Y-m-d')->label("Date"),
                 TextEntry::make('from_time')->dateTime('H:i')->label("From Time"),
                 TextEntry::make('to_time')->dateTime('H:i')->label("To Time"),
